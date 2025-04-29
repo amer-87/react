@@ -1,0 +1,44 @@
+.budy{
+  display: flex;
+  justify-content: space-around;
+  background-color: aqua;
+}
+.Academy{
+  border: 8px solid teal;
+  margin: 10px;
+  width: 40%;
+  background-color: chartreuse;
+  text-align: center;
+}
+.academy{
+background-color: rgb(218, 218, 220);
+}
+
+.siditem{
+  border: 8px solid teal;
+  background-color: rgb(134, 180, 218);
+  margin: 10px;
+  width: 30%;
+}
+.side{
+  display: flex;
+
+}
+
+
+.Center{
+  margin: 10px;
+  width: 30%;
+}
+
+
+button{
+  height: 50px;
+  width: 100px;
+  background-color: burlywood;
+  margin: 20px;
+
+}
+
+
+
