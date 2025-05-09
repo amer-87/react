@@ -1,44 +1,124 @@
-.budy{
+/* تنسيق الجسم العام */
+.body {
   display: flex;
   justify-content: space-around;
-  background-color: aqua;
+  background-color: #00bcd4; /* لون خلفية مائل للأزرق الفاتح */
+  padding: 20px;
 }
-.Academy{
-  border: 8px solid rgb(142, 160, 160);
+
+/* تنسيق قسم الأكاديمية */
+.Academy {
+  border: 8px solid #8ea0a0; /* لون الحدود */
   margin: 10px;
   width: 40%;
-  background-color: rgb(90, 101, 79);
+  background-color: rgb(188, 219, 157); /* لون الخلفية */
+  text-align: center;
+  border-radius: 8px; /* إضافة زوايا مدورة */
+  padding: 20px;
+}
+
+.Academy h1 {
+  color: white;
+  margin-bottom: 20px;
+}
+
+.academy {
+  background-color: rgb(53, 53, 110); /* خلفية مميزة */
+  padding: 10px;
+  border-radius: 6px;
+  color: white;
+  margin-bottom: 10px;
+}
+
+/* تنسيق عنصر siditem */
+.siditem {
+  border: 8px solid teal;
+  background-color: rgb(134, 180, 218); /* لون الخلفية */
+  margin: 10px;
+  width: 30%;
+  padding: 20px;
+  border-radius: 8px;
   text-align: center;
 }
-.academy{
-background-color: rgb(53, 53, 110);
+
+.siditem h1 {
+  margin-bottom: 20px;
+  color: white;
 }
 
-.siditem{
-  border: 8px solid teal;
-  background-color: rgb(134, 180, 218);
-  margin: 10px;
-  width: 30%;
-}
-.side{
+/* تنسيق جانب side */
+.side {
   display: flex;
-
+  justify-content: center; /* لتوسيط الأزرار */
+  align-items: center;
+  gap: 10px; /* إضافة مسافة بين الأزرار */
+  flex-direction: column;
 }
 
+.side button {
+  background-color: #ffcc80; /* لون خلفية الأزرار */
+  border: none;
+  border-radius: 5px;
+  padding: 10px;
+  cursor: pointer;
+  font-size: 20px;
+  transition: background-color 0.3s ease;
+}
 
-.Center{
+.side button:hover {
+  background-color: #ffb74d; /* تغيير لون الخلفية عند التمرير */
+}
+
+/* تنسيق قسم Center */
+.Center {
   margin: 10px;
   width: 30%;
+  padding: 20px;
+  background-color: #f3e5f5; /* لون خلفية خفيف */
+  border-radius: 8px;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* إضافة ظل خفيف */
 }
 
+.Center h1 {
+  text-align: center;
+  color: #4a148c; /* لون العنوان */
+  margin-bottom: 20px;
+}
 
-button{
+/* تنسيق الأزرار العامة */
+button {
   height: 50px;
-  width: 100px;
-  background-color: burlywood;
-  margin: 20px;
-
+  width: 150px; /* زيادة العرض لجعل الأزرار أكبر */
+  background-color: #f5deb3; /* لون خلفية الأزرار */
+  margin: 10px 0;
+  border: none;
+  border-radius: 8px; /* إضافة زوايا مدورة للأزرار */
+  font-size: 18px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
 }
 
+button:hover {
+  background-color: #d2b48c; /* تغيير اللون عند التمرير */
+  color: white; /* تغيير النص عند التمرير */
+}
 
+button:focus {
+  outline: none;
+}
 
+/* تحسين التنسيق للأجهزة المحمولة */
+@media (max-width: 768px) {
+  .budy {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .Academy, .siditem, .Center {
+    width: 80%; /* جعل العناصر أكبر على الشاشات الصغيرة */
+  }
+
+  .side {
+    width: 80%; /* جعل عرض الجانب أكبر */
+  }
+}

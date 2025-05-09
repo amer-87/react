@@ -1,34 +1,26 @@
-import { useState } from "react"
-
+import { useState } from 'react';
 
 export default function Side() {
-  const [name,setname]=useState(1)
+  const [count, setCount] = useState(0);
 
-const increas=()=>{
-  setname(name+1)
+  const increment = () => setCount(count + 1);
+  const decrement = () => setCount(count - 1);
+  const reset = () => {
+    if (window.confirm('هل أنت متأكد من إعادة تعيين العد؟')) {
+      setCount(0);
+    }
+  };
+
+  return (
+    <>
+      <div className="side">
+        <button onClick={increment}>+</button>
+        <h1>{count}</h1>
+        <button onClick={decrement}>-</button>
+      </div>
+      <button style={{ textAlign: 'center' }} onClick={reset}>
+        إعادة تعيين
+      </button>
+    </>
+  );
 }
-const discreas=()=>{
-  setname(name-1)
-}
-const deleat =()=>{
-  setname(0)
-}
-
-return (
-<>  
-<div className="side">   
-<button onClick={increas}>+</button> <h1>{name}</h1>
-<button onClick={discreas}>-</button>
-</div>
-<button style={{textAlign:'center'}} onClick={deleat}>deleat</button>
-
-  </>
-)
-
-}
-
-
-
-
-
-

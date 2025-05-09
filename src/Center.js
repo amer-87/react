@@ -1,7 +1,4 @@
-import { useEffect, useState } from 'react';
-
-
-
+import { useState, useEffect } from 'react';
 
 export default function Center() {
   const [form, setForm] = useState({
@@ -19,8 +16,9 @@ export default function Center() {
       setDataList(JSON.parse(savedData));
     }
   }, []);
- 
 
+  // التحقق من صحة البريد الإلكتروني
+  const emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -29,14 +27,18 @@ export default function Center() {
       alert('الرجاء ملء جميع الحقول');
       return;
     }
-    const newDataList =[...dataList,form]
-    setDataList(newDataList )
+    if (!emailPattern.test(form.email)) {
+      alert('الرجاء إدخال بريد إلكتروني صالح');
+      return;
+    }
+
+    const newDataList = [...dataList, form];
+    setDataList(newDataList);
     localStorage.setItem('clinicData', JSON.stringify(newDataList));
-    setForm({name:'',email:'',age:''});
-  }
 
+    setForm({ name: '', email: '', age: '' });
+  };
 
-  // دالة لحذف كل البيانات
   const handleDeleteAll = () => {
     if (window.confirm('هل أنت متأكد من حذف جميع البيانات؟')) {
       setDataList([]);
@@ -44,53 +46,52 @@ export default function Center() {
     }
   };
 
-
   const handleDeleteItem = (index) => {
     const updatedList = dataList.filter((_, i) => i !== index);
     setDataList(updatedList);
     localStorage.setItem('clinicData', JSON.stringify(updatedList));
   };
-  
-
-
-
-  const mylist = dataList.map((item, index) => (
-    <ul key={index}>
-      <li>الاسم: {item.name}</li>
-      <li>البريد الإلكتروني: {item.email}</li>
-      <li>العمر: {item.age}</li>
-      <button onClick={() => handleDeleteItem(index)}>del</button>
-      <hr />
-    </ul>
-  ));
-
-
-
 
   return (
-  <>
-  <form onSubmit={handleSubmit}>
-    <div>  <label>name</label>
-<input type='text' value={form.name} onChange={(e)=>setForm({...form, name:e.target.value})}/>  </div>
+    <>
+      <form onSubmit={handleSubmit}>
+        <div>
+          <label>الاسم</label>
+          <input type="text" value={form.name} onChange={(e) => setForm({ ...form, name: e.target.value })} />
+        </div>
 
-<div>  <label>Email</label>
-<input type='Email' value={form.email} onChange={(e)=>setForm ({...form, email :e.target.value})}/>  </div>
+        <div>
+          <label>البريد الإلكتروني</label>
+          <input type="email" value={form.email} onChange={(e) => setForm({ ...form, email: e.target.value })} />
+        </div>
 
-<div>  <label>Age</label>
-<input type='number'value={form.age} onChange={(e)=>setForm({...form , age:e.target.value})}/></div>
+        <div>
+          <label>العمر</label>
+          <input type="number" value={form.age} onChange={(e) => setForm({ ...form, age: e.target.value })} />
+        </div>
 
-<button type='submit'>submit</button>
-  </form>
-  {mylist}
+        <button type="submit">إرسال</button>
+      </form>
 
-  
-  {dataList.length > 0 && (
+      <div>
+        {dataList.map((item, index) => (
+          <ul key={index}>
+            <li>الاسم: {item.name}</li>
+            <li>البريد الإلكتروني: {item.email}</li>
+            <li>العمر: {item.age}</li>
+            <button onClick={() => handleDeleteItem(index)}>حذف</button>
+            <hr />
+          </ul>
+        ))}
+      </div>
+
+      {dataList.length > 0 && (
         <button onClick={handleDeleteAll} style={{ background: 'red', color: 'white', marginTop: '10px' }}>
           حذف الكل
         </button>
-        
       )}
-      {dataList.length >=2 && (<button>counter</button>)}
-  </>
-  )};
 
+      {dataList.length >= 2 && <button>إحصاء</button>}
+    </>
+  );
+}

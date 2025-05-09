@@ -1,28 +1,19 @@
-// import AcademyItem from "./AcademyItem";
-export default function Academy(){
+export default function Academy() {
+  const academy = [
+    { id: 1, name: 'أمير', dueDate: 2024, lastDue: 2022 },
+    { id: 2, name: 'علي', dueDate: 2025, lastDue: 2020 },
+    { id: 3, name: 'أحمد', dueDate: 2025, lastDue: 2020 },
+    { id: 4, name: 'عمر', dueDate: 2025, lastDue: 2020 },
+  ];
 
-  const Academy =[
- 
-    {id:1,    name:'amer', dueDate:2024,LastDue:2022},
-    {  id:2  ,  name:'alie', dueDate:2025,LastDue:2020 },
-    {  id:3  , name:'ahmed', dueDate:2025,LastDue:2020 },
-    {  id:4 ,name:'omer',dueDate:2025,LastDue:2020 }
-    ]
-    const myAcadmy=Academy.map((item)=>{
-      return(
-        <div key={item.id}><div>{item.name} </div><br/><div>{item.dueDate}</div><br/><div>{item.LastDue}</div><hr/></div>
-      )
-    });
+  const academyItems = academy.map((item) => (
+    <div key={item.id}>
+      <div>{item.name}</div>
+      <div>{item.dueDate}</div>
+      <div>{item.lastDue}</div>
+      <hr />
+    </div>
+  ));
 
-    //const Academytems=Academy.map((item)=>{
-  // if(Sideitem.name===''){  هنا ايظا يمكن استخدام if
-  //   return null;}
-
-
-return (
-<div >  
-{myAcadmy } 
-
-
- 
-</div> )} 
+  return <div>{academyItems}</div>;
+}
